@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:new_project/screens/widgets_conteudo.dart';
+import 'package:new_project/screens/widgets_layout.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,93 +13,35 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-       
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: Scaffold(
-        appBar: AppBar(title: Text('Widget pai', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold))),
-        body: Column(
-          children: [Text('Widget fi no style',
-           style: TextStyle(fontSize: 20,
-          fontWeight: FontWeight.bold,
-           color: Colors.deepPurple
-           ),),
-
-           Text('Widget fi n2 no style',
-           style: TextStyle(fontSize: 18,
-          fontWeight: FontWeight.bold,
-           color: Colors.blue
-           ),),
-
-           Text('Acende o farol',
-           style: TextStyle(fontSize: 18,
-          fontWeight: FontWeight.bold,
-          ),),
-
-            Divider(),
-            Text('Image',
-           style: TextStyle(fontSize: 20,
-          fontWeight: FontWeight.bold, color: Colors.blue,
-          ),),
-            Image.network('https://picsum.photos/id/870/200/300?grayscale&blur=2',),
-
-            Divider(),
-            Text('Icone',
-           style: TextStyle(fontSize: 20,
-          fontWeight: FontWeight.bold, color: Colors.blue,
-          ),),
-            // Image.network('https://picsum.photos/id/870/200/300?grayscale&blur=2',)
-            
-           ]
-        ),
-      ),
+      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple),),
+      home: ListContents(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class ListContents extends StatelessWidget {
+  const ListContents({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: .center,
-          children: [
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      appBar: AppBar(title: Text('Bem-Vindo', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold))),
+      body: Column(
+        children: [
+          ElevatedButton(
+            onPressed: () => Navigator.push(
+              context,
+           MaterialPageRoute(builder: (_) => WidgetsConteudo())), 
+          child: Text('Widgets de Conteúdo')
+          ),
+           ElevatedButton(
+            onPressed: () => Navigator.push(
+             context,
+             MaterialPageRoute(builder: (_) => WidgetsLayout())),
+           child: Text('Widgets de Layout')),
+
+
+        ],
       ),
     );
   }
