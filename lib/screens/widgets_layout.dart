@@ -67,6 +67,27 @@ class WidgetsLayout extends StatelessWidget {
                 ],
               ),
             ),
+            Divider(),
+            TituloSessao(titulo: 'expandend e flexible (row)'),
+            Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    height: 50,
+                    color: const Color.fromARGB(255, 126, 231, 179),
+                    child: Center(child: Text('Expanded')),
+                  ),
+                ),
+                Flexible(
+                  flex: 2,
+                  child: Container(
+                    height: 50,
+                    color: const Color.fromARGB(255, 126, 224, 231),
+                    child: Center(child: Text('Flexible (2)')),
+                  ),
+                ),
+              ],
+            )
         ],
       ),
     );
